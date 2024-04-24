@@ -15,16 +15,14 @@ _Put or write the user story here. Add any clarifying notes you might have._
 _Include the name of the function, its parameters, return value, and side effects._
 
 ```python
-# EXAMPLE
-
-def extract_uppercase(mixed_words):
-    """Extracts uppercase words from a string
+def todo_checker(text):
+    """Checks a string includes the string #TODO
 
     Parameters: (list all parameters and their types)
-        mixed_words: a string containing words (e.g. "hello WORLD")
+        text: a string containing words (e.g. "hello #TODO")
 
     Returns: (state the return value and its type)
-        a list of strings, each one a word (e.g. ["WORLD"])
+        a Boolean, e.g. `True`
 
     Side effects: (state any side effects)
         This function doesn't print anything or have any other side-effects
@@ -37,49 +35,53 @@ def extract_uppercase(mixed_words):
 _Make a list of examples of what the function will take and return._
 
 ```python
-# EXAMPLE
+"""
+Given "#TODO"
+It returns True
+"""
+todo_checker("#TODO") => True
 
 """
-Given a lower and an uppercase word
-It returns a list with the uppercase word
+Given "Hello #TODO"
+It returns True
 """
-extract_uppercase("hello WORLD") => ["WORLD"]
+todo_checker("Hello #TODO") => True
 
 """
-Given two uppercase words
-It returns a list with both words
+Given a string with multiple instances of the target
+It returns True
 """
-extract_uppercase("HELLO WORLD") => ["HELLO", "WORLD"]
+todo_checker("Hello #TODO #TODO") => True
 
 """
-Given two lowercase words
-It returns an empty list
+Given a string with no target
+It returns False
 """
-extract_uppercase("hello world") => []
-
-"""
-Given a lower and a mixed case word
-It returns an empty list
-"""
-extract_uppercase("hello WoRLD") => []
-
-"""
-Given a lowercase word and an uppercase word with an exclamation mark
-It returns a list with the uppercase word, no exclamation mark
-"""
-extract_uppercase("hello WORLD!") => ["WORLD"]
+todo_checker("hello WoRLD") => False
 
 """
 Given an empty string
-It returns an empty list
+It returns False
 """
-extract_uppercase("") => []
+todo_checker("") => False
 
 """
-Given a None value
-It throws an error
+Given a string containing an incomplete target
+Return False
 """
-extract_uppercase(None) throws an error
+todo_checker("hello TODO") => False
+
+"""
+Given a string containing an incomplete target
+Return False
+"""
+todo_checker("#TO: Do a barrel-roll") => False
+
+"""
+Given "ItWill#TODOTonight"
+It returns True
+"""
+todo_checker("ItWill#TODOTonight") => True
 ```
 
 _Encode each example as a test. You can add to the above list as you go._
@@ -91,17 +93,16 @@ _After each test you write, follow the test-driving process of red, green, refac
 Here's an example for you to start with:
 
 ```python
-# EXAMPLE
-
-from lib.extract_uppercase import *
+from lib.todo_checker import *
 
 """
-Given a lower and an uppercase word
-It returns a list with the uppercase word
+Given "#TODO"
+It returns True
 """
-def test_extract_uppercase_with_upper_then_lower():
-    result = extract_uppercase("hello WORLD")
-    assert result == ["WORLD"]
+
+def test_todo_checker_with_only_the_target():
+    result = todo_checker("#TODO")
+    assert result == True
 ```
 
 Ensure all test function names are unique, otherwise pytest will ignore them!
