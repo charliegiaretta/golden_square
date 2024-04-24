@@ -4,6 +4,10 @@ Copy this into a `recipe.md` in your project and fill it out.
 
 ## 1. Describe the Problem
 
+> As a user
+> So that I can keep track of my tasks
+> I want to check if a text includes the string `#TODO`.
+
 _Put or write the user story here. Add any clarifying notes you might have._
 
 ## 2. Design the Function Signature
