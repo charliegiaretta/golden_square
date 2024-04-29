@@ -25,3 +25,5 @@ def test_with_empty_words():
         estimate_reading_time("")
     error_message = str(e.value)
     assert error_message == "Can't estimate reading time for empty text"
+
+    

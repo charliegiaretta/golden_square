@@ -4,38 +4,38 @@ Copy this into a `recipe.md` in your project and fill it out.
 
 ## 1. Describe the Problem
 
-As a user
-So that I can keep track of my tasks
-I want to check if a text includes the string `#TODO`.
+As an admin
+So that I can determine whether a user is old enough
+I want to allow them to enter their date of birth as a string in the format `YYYY-MM-DD`.
+
+As an admin
+So that under-age users can be denied entry
+I want to send a message to any user under the age of 16 saying their access is denied, telling them their current age and the required age (16).
+
+As an admin
+So that old enough users can be granted access
+I want to send a message to any user aged 16 or older to say that access has been granted.
+
+As an admin
+So that invalid entries are rejected
+I want to generate an exception when the date of birth isn't the right type or format.
+
 
 ## 2. Design the Function Signature
 
 _Include the name of the function, its parameters, return value, and side effects._
 
 ```python
-def check_if_todo(text):
-    #Parameters: A string containing words with #TODO in it
+# EXAMPLE
 
-    #Returns: Boolean (True or False)
+def age_checker(date)
+    """Checks age of user
 
+    Parameters: string representing date of birth in the format 'YYYY-MM-DD'
 
+    Returns: Message that signals whether access is granted or denied
+    or an exception is raised when DOB is in incorrect format
 
-
-
-
-
-def extract_uppercase(mixed_words):
-    """Extracts uppercase words from a string
-
-    Parameters: (list all parameters and their types)
-        mixed_words: a string containing words (e.g. "hello WORLD")
-
-    Returns: (state the return value and its type)
-        a list of strings, each one a word (e.g. ["WORLD"])
-
-    Side effects: (state any side effects)
-        This function doesn't print anything or have any other side-effects
-    """
     pass # Test-driving means _not_ writing any code here yet.
 ```
 
@@ -44,44 +44,36 @@ def extract_uppercase(mixed_words):
 _Make a list of examples of what the function will take and return._
 
 ```python
-
-"""
-If empty string given
-Returns False
-"""
-def test_if_empty_string_given():
-    => False
-
-"""
-If string given without #TODO
-Returns False
-"""
-def test_if_string_without_todo():
-    => False
-
-"""
-If string does contain #TODO
-Returns True
-"""
-def test_if_string_contains_todo():
-    => True
-
-"""
-If string has no spaces but contains #TODO
-Returns True
-"""
-def test_if_string_with_no_spaces_contains_todo():
-    => True
-
-"""
-If string contains partially entered #TODO
-Returns False
-"""
-def test_if_todo_is_partially_entered():
-    => False
-
-
 # EXAMPLE
+
+"""
+When date is given 
+If user is under the age of 16
+Return access denied message
+"""
+
+def test_access_denied_if_user_is_underage():
+    => "Access denied!"
+
+"""
+When date is given 
+If user is over the age of 16
+Return access granted message
+"""
+
+def test_access_denied_if_user_is_underage():
+    => "Access granted!"
+
+"""
+When no date is given
+Raise exception and return error message that date is in incorrect format
+"""
+
+def test_access_denied_if_user_is_correct_age():
+    => "Date is in an incorrect format! Please enter date YYYY-MM-DD"
+
+
+
 
 """
 Given a lower and an uppercase word

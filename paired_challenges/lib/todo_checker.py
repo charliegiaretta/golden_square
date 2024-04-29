@@ -1,2 +1,2 @@
-def todo_checker(text):
-    return "#TODO" in text
+def check_if_todo(text):
+    return '#TODO' in text
